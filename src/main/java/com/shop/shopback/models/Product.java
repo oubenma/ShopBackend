@@ -4,6 +4,7 @@ package com.shop.shopback.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,33 +14,28 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name ="product")
-
 public class Product {
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
-    private String name;
+    private String title;
     private float salePrice;
     private float oldPrice;
-    private  String pathNamePicture;
+    private int value;
+    private  String imageUrl;
     private String description;
     private int quantityStock;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Categorie categorie;
-    @OneToMany
-    private List<Tags> tags;
-    @OneToMany
+    @ManyToOne
+    private Tags tags;
+    @OneToMany(mappedBy = "product")
     private List<Review> reviews;
-    @OneToMany
-    private List<Orderitems> orderitems;
-    @OneToMany
+    @OneToMany(mappedBy = "product")
+    private List<Orderitems> orderItems;
+    @OneToMany(mappedBy = "product")
     private List<Picture> pictures;
 
-
-
-    
-    
 }
 

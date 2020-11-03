@@ -15,13 +15,12 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
     private String comment;
     private  int stars;
-    @OneToOne
+    @ManyToOne
     private  Customer customer;
-    @OneToOne
+    @ManyToOne
     private Product product;
 
 

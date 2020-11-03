@@ -14,13 +14,12 @@ import javax.persistence.*;
 public class Orderitems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
     private int quantity;
 
-    @OneToOne
+    @ManyToOne
     private Order order;
-    @OneToOne
+    @ManyToOne
     private Product product;
 }
 

@@ -16,13 +16,12 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
     private String dateOrder;
 
-    @OneToMany
-    private List<Orderitems> orderitems;
-    @OneToOne
+    @OneToMany(mappedBy = "order")
+    private List<Orderitems> orderItems;
+    @ManyToOne
     private Customer customer;
 
 }

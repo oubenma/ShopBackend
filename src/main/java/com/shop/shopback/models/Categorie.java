@@ -2,6 +2,7 @@ package com.shop.shopback.models;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,12 @@ public class Categorie {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy ="categorie", fetch = FetchType.LAZY )
+    @JsonIgnore
     private List<Product> products;
+
+
+
 }

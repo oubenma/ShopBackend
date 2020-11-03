@@ -14,12 +14,11 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
     private int id;
     private String city;
     private String street;
     private String others;
-    @OneToOne
+    @OneToOne(mappedBy ="address" )
     private  Customer customer;
 
 }
