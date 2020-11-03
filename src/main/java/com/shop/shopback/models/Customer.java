@@ -15,17 +15,16 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",  nullable = false)
         private int id;
         private String firstName;
         private  String lastName;
         private String email;
         private String password;
         private String phoneNumber;
-        @OneToMany
+        @OneToMany(mappedBy ="customer" )
         private List<Review> reviews;
         @OneToOne
         private Address address;
-        @OneToMany
+        @OneToMany(mappedBy ="customer" )
            private List<Order> orders;
 }

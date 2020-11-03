@@ -1,6 +1,7 @@
 package com.shop.shopback;
 
 import com.shop.shopback.models.*;
+import com.shop.shopback.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,9 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 @SpringBootApplication
 public class ShopbackApplication implements CommandLineRunner {
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @Autowired
     private RepositoryRestConfiguration repositoryRestConfiguration;
@@ -28,6 +32,12 @@ public class ShopbackApplication implements CommandLineRunner {
         repositoryRestConfiguration.exposeIdsFor(Review.class);
         repositoryRestConfiguration.exposeIdsFor(Tags.class);
         repositoryRestConfiguration.exposeIdsFor(Product.class);
+
+
+//        Product product = new Product();
+//        product.setTitle("Product 1");
+//        Categorie categorie = new Categorie(1);
+//        product.setCategorie(categorie);
 
     }
 

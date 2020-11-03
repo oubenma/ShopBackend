@@ -14,11 +14,10 @@ import javax.persistence.*;
 public class Picture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id",  nullable = false)
 	private int id;
 	private String path;
 
-	@OneToOne
+	@ManyToOne
 	private Product product;
 
 }
